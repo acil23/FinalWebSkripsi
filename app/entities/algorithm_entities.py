@@ -1,9 +1,8 @@
 """Entity dan value object untuk parameter algoritma.
 
-Tahap 4 mengimplementasikan ParameterAlgoritma sebagai value object sesuai
-class diagram Bab 5. Objek ini bertanggung jawab memegang nilai parameter dan
-melakukan validasi rentang nilai sebelum parameter disimpan sebagai
-currentParameter.
+ParameterAlgoritma menyimpan konfigurasi eksekusi engine penjadwalan dan
+melakukan validasi rentang nilai sebelum parameter digunakan dalam proses
+optimasi.
 """
 
 from __future__ import annotations

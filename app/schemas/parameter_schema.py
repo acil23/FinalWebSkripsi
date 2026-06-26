@@ -1,4 +1,4 @@
-"""Skema dan metadata field parameter algoritma untuk form Tahap 4."""
+"""Skema dan metadata field parameter algoritma untuk form web."""
 
 from app.entities.algorithm_entities import PARAMETER_LIMITS
 

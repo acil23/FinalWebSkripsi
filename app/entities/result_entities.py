@@ -1,8 +1,8 @@
-"""Entity hasil penjadwalan untuk Tahap 5.
+"""Entity hasil penjadwalan.
 
 File ini merealisasikan Jadwal, JadwalItem, EvaluasiJadwal, BebanDosen,
 LogKonvergensi, dan PenjadwalanResult sesuai class diagram Bab 5. Objek-objek
-ini menjadi bentuk data web-friendly dari hasil engine Memetic Algorithm lama.
+ini menjadi bentuk data web-friendly dari hasil engine Memetic Algorithm.
 """
 
 from __future__ import annotations

@@ -1,8 +1,9 @@
 """State sementara aplikasi.
 
-State ini dipakai untuk menjaga alur bertahap sesuai rancangan Bab 5:
-currentDataset, currentParameter, currentClassOpening, currentSessions, dan
-currentResult. Tahap 4 sudah menggunakan current_dataset, current_class_opening, current_sessions, dan current_parameter.
+State ini menjaga data aktif selama server berjalan, meliputi dataset, parameter,
+konfigurasi pembukaan kelas, kelas, sesi, hasil penjadwalan, dan status eksekusi.
+State in-memory ini digunakan untuk mendukung alur single-admin sesuai ruang
+lingkup implementasi sistem.
 """
 
 from dataclasses import dataclass, field

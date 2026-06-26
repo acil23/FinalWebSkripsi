@@ -1,9 +1,8 @@
-"""Control layer untuk riwayat jadwal.
+"""Control layer untuk UC-07 dan UC-08.
 
-Tahap 8 merealisasikan UC-07 Menyimpan Riwayat Jadwal dan UC-08 Melihat
-Riwayat Jadwal. Controller ini mengambil currentResult dari SchedulingController,
-membentuk RiwayatJadwal, menyimpannya melalui HistoryRepository, serta membangun
-view data untuk daftar dan detail riwayat.
+Controller ini mengambil hasil penjadwalan aktif dari SchedulingController,
+membentuk objek RiwayatJadwal, menyimpannya melalui HistoryRepository, serta
+membangun data tampilan untuk daftar dan detail riwayat jadwal.
 """
 
 from __future__ import annotations

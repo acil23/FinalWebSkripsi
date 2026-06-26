@@ -1,10 +1,10 @@
 """Value object DatasetBundle untuk menyimpan status data masukan.
 
 DatasetBundle merepresentasikan kumpulan data akademik yang telah diunggah
-oleh Admin Program Studi. Pada Tahap 2, objek ini berfokus pada validasi
-kelengkapan dan struktur CSV. Isi data rinci tetap disimpan sebagai file CSV
-pada folder data/uploaded agar dapat digunakan pada tahap konfigurasi kelas
-serta integrasi engine algoritma.
+oleh Admin Program Studi. Objek ini menyimpan status validasi kelengkapan dan
+struktur CSV, sedangkan isi data rinci tetap disimpan sebagai file CSV pada
+folder data/uploaded agar dapat digunakan dalam konfigurasi kelas dan engine
+algoritma.
 """
 
 from __future__ import annotations

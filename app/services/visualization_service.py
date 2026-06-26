@@ -1,9 +1,9 @@
 """Service visualisasi hasil penjadwalan.
 
 Service ini membentuk data grafik berbasis SVG agar halaman hasil dan detail
-riwayat tetap dapat menampilkan visualisasi tanpa CDN/Chart.js. Tahap 9.4
-menambahkan informasi sumbu, judul, legenda, dan anotasi agar grafik yang
-diunduh tetap dapat dipahami sebagai gambar mandiri.
+riwayat tetap dapat menampilkan visualisasi tanpa CDN/Chart.js. Grafik memuat
+informasi sumbu, judul, legenda, dan anotasi agar dapat dipahami sebagai gambar
+mandiri ketika diekspor atau digunakan dalam laporan.
 """
 
 from __future__ import annotations

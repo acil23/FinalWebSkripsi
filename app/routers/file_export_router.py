@@ -1,9 +1,8 @@
-"""Boundary layer untuk ekspor hasil penjadwalan.
+"""Boundary layer untuk UC-06 Mengekspor Hasil Penjadwalan.
 
-Tahap 7 merealisasikan UC-06 Mengekspor Hasil Penjadwalan melalui halaman
-Ekspor Hasil dan endpoint download CSV/ZIP. Router ini tetap bertindak sebagai
-boundary layer, sedangkan pembentukan file didelegasikan kepada SchedulingController
-lalu CSVExporter.
+Router ini menangani halaman ekspor dan endpoint download CSV/ZIP. Pembentukan
+file didelegasikan kepada SchedulingController dan CSVExporter agar router tetap
+berperan sebagai boundary layer.
 """
 
 from pathlib import Path

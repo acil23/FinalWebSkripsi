@@ -1,9 +1,9 @@
 """Control layer utama untuk alur penjadwalan.
 
-Tahap 5 menambahkan orkestrasi UC-04 Mengeksekusi Penjadwalan dengan
-membungkus engine Memetic Algorithm lama melalui GAEngineService. Controller ini
-menjaga prasyarat eksekusi, menjalankan engine, dan menyimpan currentResult ke
-AppState agar dapat digunakan pada Tahap 6.
+Controller ini mengoordinasikan validasi data, konfigurasi pembukaan kelas,
+pengaturan parameter, eksekusi engine Memetic Algorithm, penyajian hasil, dan
+ekspor data. Hasil aktif disimpan sementara pada AppState agar dapat digunakan
+oleh halaman hasil, ekspor, dan riwayat jadwal.
 """
 
 from __future__ import annotations
@@ -87,7 +87,7 @@ class SchedulingController:
     def upload_data(self, payloads: dict[str, list[UploadedCsvPayload]]) -> DatasetBundle:
         validated_dataset = self.data_validation_controller.validate_uploaded_data(payloads)
         self.set_current_dataset(validated_dataset)
-        # Reset tahapan setelah upload baru agar konfigurasi/parameter/hasil lama tidak bias.
+        # Reset data aktif setelah upload baru agar konfigurasi, parameter, dan hasil lama tidak bias.
         app_state.current_class_opening = None
         app_state.current_classes = None
         app_state.current_sessions = None

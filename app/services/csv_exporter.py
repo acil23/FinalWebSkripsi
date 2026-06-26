@@ -1,8 +1,7 @@
 """Service ekspor hasil penjadwalan.
 
-Tahap 7 merealisasikan CSVExporter sesuai class diagram Bab 5. Service ini
-mengubah objek PenjadwalanResult menjadi berkas CSV dan paket ZIP yang dapat
-diunduh oleh Admin Program Studi melalui FileExportRouter.
+CSVExporter mengubah objek PenjadwalanResult menjadi berkas CSV dan paket ZIP
+yang dapat diunduh oleh Admin Program Studi melalui FileExportRouter.
 """
 
 from __future__ import annotations

@@ -1,8 +1,8 @@
 """Entity riwayat jadwal dan helper serialisasi hasil penjadwalan.
 
-Tahap 8 merealisasikan RiwayatJadwal sesuai class diagram Bab 5. Objek ini
-menyimpan snapshot hasil jadwal, evaluasi, parameter, konfigurasi kelas, beban
-dosen, dan log konvergensi agar hasil dapat ditelusuri kembali melalui SQLite.
+RiwayatJadwal menyimpan snapshot hasil jadwal, evaluasi, parameter, konfigurasi
+kelas, beban dosen, dan log konvergensi agar hasil penjadwalan dapat ditelusuri
+kembali melalui SQLite.
 """
 
 from __future__ import annotations

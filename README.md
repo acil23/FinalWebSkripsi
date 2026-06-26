@@ -1,92 +1,141 @@
-# Sistem Penjadwalan Mata Kuliah - Tahap 8
+# Sistem Informasi Penjadwalan Mata Kuliah
 
-Tahap 8 menambahkan penyimpanan riwayat jadwal menggunakan SQLite sesuai rancangan UC-07 dan UC-08.
+Implementasi web untuk sistem penjadwalan mata kuliah berbasis **Memetic Algorithm**. Aplikasi ini dirancang untuk membantu Admin Program Studi dalam mengelola data masukan, menentukan konfigurasi pembukaan kelas, mengatur parameter algoritma, menjalankan optimasi penjadwalan, melihat hasil jadwal dan evaluasi, mengekspor hasil, serta menyimpan riwayat jadwal.
 
-## Fitur Tahap 8
+Sistem dikembangkan menggunakan **FastAPI**, **Jinja2 Templates**, **Pandas**, dan **SQLite**. Pemrosesan data dan engine algoritma berjalan secara in-memory, sedangkan SQLite digunakan untuk menyimpan riwayat jadwal dalam bentuk JSON snapshot.
 
-- Modal Simpan Riwayat pada halaman Hasil Penjadwalan.
-- Validasi nama riwayat.
-- Penyimpanan snapshot hasil jadwal ke SQLite.
-- Penyimpanan jadwal, evaluasi, parameter, konfigurasi kelas, beban dosen, dan log konvergensi.
-- Halaman Riwayat Jadwal.
-- Filter daftar riwayat berdasarkan nama dan status feasibility.
-- Detail Riwayat Jadwal.
-- Hapus riwayat.
-- Ekspor ulang hasil riwayat dalam CSV/ZIP.
+## Fitur Utama
 
-## Menjalankan Aplikasi
+- Dashboard penjadwalan dengan alur proses sistem.
+- Unggah data masukan dalam format CSV.
+- Unduh template CSV untuk setiap jenis data masukan.
+- Drag-and-drop file CSV pada halaman unggah data.
+- Validasi struktur dan kelengkapan data masukan.
+- Rekomendasi dan konfirmasi konfigurasi pembukaan kelas.
+- Pengaturan parameter algoritma, termasuk ukuran populasi, jumlah generasi, crossover rate, mutation rate, peluang local search, elitism, dan seed.
+- Eksekusi penjadwalan menggunakan engine Memetic Algorithm.
+- Polling status eksekusi untuk menampilkan progres generasi, fitness, dan konflik.
+- Tampilan hasil jadwal, evaluasi, beban dosen, dan grafik konvergensi.
+- Ekspor hasil jadwal, evaluasi, beban dosen, log konvergensi, dan paket ZIP.
+- Penyimpanan riwayat jadwal menggunakan SQLite.
+- Tampilan daftar riwayat, detail riwayat, ekspor ulang, dan hapus riwayat.
+
+## Struktur Folder
+
+```text
+app/
+  algorithm/       Engine algoritma penjadwalan
+  controllers/     Control layer untuk mengatur alur use case
+  core/            Konfigurasi, path, dan state aplikasi
+  entities/        Entity dan value object sistem
+  repositories/    Repository untuk akses penyimpanan riwayat
+  routers/         Boundary layer / route FastAPI
+  schemas/         Metadata form dan validasi input
+  services/        Service pendukung seperti data loader, ekspor, dan visualisasi
+  static/          CSS dan aset gambar
+  templates/       Template halaman web Jinja2
+
+data/
+  db/              Lokasi database SQLite riwayat jadwal
+  export/          Lokasi file hasil ekspor
+  input/           Direktori input pendukung
+  output/          Direktori output engine algoritma
+  uploaded/        Lokasi penyimpanan file CSV yang diunggah
+```
+
+## Kebutuhan Sistem
+
+- Python 3.11 atau lebih baru.
+- Browser web modern.
+- Paket Python sesuai `requirements.txt`.
+
+## Cara Menjalankan Aplikasi
+
+1. Buat virtual environment.
 
 ```bash
 python -m venv .venv
+```
+
+2. Aktifkan virtual environment.
+
+Linux/macOS:
+
+```bash
 source .venv/bin/activate
+```
+
+Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+3. Instal dependensi.
+
+```bash
 pip install -r requirements.txt
+```
+
+4. Jalankan server pengembangan.
+
+```bash
 uvicorn app.main:app --reload
 ```
 
-Buka aplikasi di:
+5. Buka aplikasi melalui browser.
 
 ```text
 http://127.0.0.1:8000
 ```
 
-## Alur Uji Tahap 8
+## Alur Penggunaan
 
-1. Jalankan alur Tahap 1 sampai Tahap 6 hingga hasil penjadwalan tersedia.
-2. Buka `/hasil-penjadwalan`.
-3. Klik `Simpan Riwayat`.
-4. Isi nama riwayat dan simpan.
-5. Buka `/riwayat-jadwal`.
-6. Klik `Lihat Detail` pada salah satu riwayat.
-7. Coba `Ekspor Ulang`.
-8. Coba hapus salah satu riwayat.
+1. Buka halaman **Dashboard**.
+2. Masuk ke halaman **Unggah Data**.
+3. Unduh template CSV apabila diperlukan.
+4. Unggah seluruh data masukan yang dibutuhkan.
+5. Buka halaman **Konfigurasi Kelas** dan hasilkan rekomendasi pembukaan kelas.
+6. Tinjau atau ubah jumlah kelas final, lalu simpan konfigurasi.
+7. Buka halaman **Parameter Algoritma** dan simpan parameter eksekusi.
+8. Buka halaman **Eksekusi Penjadwalan** dan jalankan proses optimasi.
+9. Buka halaman **Hasil Penjadwalan** untuk melihat jadwal, evaluasi, grafik, dan beban dosen.
+10. Gunakan halaman **Ekspor Hasil** untuk mengunduh file hasil penjadwalan.
+11. Gunakan fitur **Simpan Riwayat** untuk menyimpan hasil jadwal ke SQLite.
+12. Buka halaman **Riwayat Jadwal** untuk melihat kembali hasil yang telah disimpan.
 
-## Struktur Komponen Baru
+## Data Masukan
 
-- `app/entities/history_entities.py`
-- `app/repositories/history_repository.py`
-- `app/controllers/history_controller.py`
-- `app/routers/history_router.py`
-- `app/templates/riwayat_jadwal.html`
-- `app/templates/detail_riwayat.html`
+Aplikasi menerima beberapa data masukan utama dalam format CSV:
 
-SQLite tersimpan di:
+- Data mata kuliah wajib.
+- Data mata kuliah pilihan.
+- Data dosen pengampu.
+- Data preferensi dosen.
+- Data ruang kelas.
+- Data slot waktu.
+- Data jumlah mahasiswa.
+- Data Pra-KRS mata kuliah pilihan.
+
+Template CSV dapat diunduh langsung dari halaman **Unggah Data** melalui tombol **Unduh Template CSV** pada masing-masing kartu data.
+
+## Penyimpanan Riwayat
+
+Riwayat jadwal disimpan menggunakan SQLite pada direktori berikut:
 
 ```text
 data/db/scheduling_history.sqlite3
 ```
 
-Database dibuat otomatis saat aplikasi dijalankan.
+Database dibuat otomatis saat aplikasi dijalankan. Setiap riwayat disimpan sebagai satu record utama pada tabel `riwayat_jadwal` dengan pendekatan JSON snapshot. Metadata ringkas disimpan pada kolom terpisah, sedangkan detail hasil jadwal, parameter algoritma, dan konfigurasi pembukaan kelas disimpan dalam kolom JSON.
 
-## Catatan Tahap 9 - Perbaikan Testing Fungsional
+## Catatan Implementasi
 
-Perbaikan yang ditambahkan pada Tahap 9:
+- Aplikasi dirancang untuk alur penggunaan satu Admin Program Studi.
+- State aktif aplikasi masih disimpan secara in-memory selama server berjalan.
+- Jika server dimatikan atau restart, data aktif yang belum disimpan sebagai riwayat perlu diproses ulang.
+- Untuk pengembangan produksi, autentikasi pengguna, session per admin, job queue, dan penyimpanan state yang lebih persisten dapat ditambahkan.
 
-1. **Batas parameter demo cepat**
-   - `max_generations` sekarang valid mulai dari `1` sampai `1000`.
-   - `pop_size` sekarang valid mulai dari `10` sampai `500`.
-   - Batas validasi dipusatkan pada `app/entities/algorithm_entities.py` melalui konstanta `PARAMETER_LIMITS`, sehingga dapat dinaikkan atau diturunkan dengan aman tanpa mencari banyak file.
+## Status
 
-2. **Progress eksekusi otomatis**
-   - Halaman `Eksekusi Penjadwalan` sekarang melakukan polling ke `/api/scheduling/status` setiap 1 detik saat proses berjalan.
-   - Progress bar, generasi, fitness, dan konflik diperbarui tanpa perlu klik menu lain atau refresh manual.
-
-3. **State tombol eksekusi lebih jelas**
-   - Saat idle: `Mulai Eksekusi`.
-   - Saat running: `Eksekusi Sedang Berjalan` dan tombol nonaktif.
-   - Setelah selesai: `Jalankan Ulang Eksekusi`.
-   - Jika gagal: `Coba Eksekusi Ulang`.
-
-## Patch Tahap 9.1 - Perbaikan polling status eksekusi
-
-Patch ini memperbaiki progress bar pada halaman Eksekusi Penjadwalan yang sebelumnya tidak bergerak otomatis. Penyebabnya adalah blok JavaScript polling status berada di luar blok `content` template Jinja, sehingga tidak ikut dirender oleh layout utama. Script polling sekarang dipindahkan ke dalam blok konten dan dibuat lebih robust dengan pengambilan status awal melalui endpoint `/api/scheduling/status`, lalu polling otomatis setiap 1 detik selama state eksekusi masih `running`.
-
-## Patch Tahap 9.5 - Template CSV dan Drag-and-Drop Upload
-
-Perbaikan tambahan:
-
-- Tombol **Unduh Template CSV** pada halaman Unggah Data sudah aktif.
-- Field **Data Mata Kuliah** mengunduh paket ZIP berisi template MK wajib dan MK pilihan.
-- Field upload lain mengunduh template CSV sesuai struktur kolom wajib masing-masing.
-- Area upload sekarang mendukung **drag and drop** file CSV.
-- Preview nama file yang dipilih/di-drop ditampilkan sebelum validasi.
-- Validasi sisi client memberi peringatan cepat untuk file non-CSV atau file di atas 2MB.
+Versi ini merupakan implementasi final sementara untuk kebutuhan penulisan dan pengujian skripsi. Seluruh use case utama UC-01 sampai UC-08 telah direalisasikan dalam bentuk halaman web, endpoint, service, dan repository yang sesuai dengan rancangan sistem.

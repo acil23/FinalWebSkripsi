@@ -503,7 +503,7 @@ body {
 }
 
 /* ==========================
-   Tahap 2 - Upload Data
+   Halaman Upload Data
    ========================== */
 .upload-header {
     display: flex;
@@ -839,7 +839,7 @@ body {
 }
 
 /* ==========================
-   Tahap 3 - Konfigurasi Kelas
+   Halaman Konfigurasi Kelas
    ========================== */
 .class-opening-header {
     display: flex;
@@ -1188,7 +1188,7 @@ body {
 }
 
 /* ==========================
-   Tahap 4 - Parameter Algoritma
+   Halaman Parameter Algoritma
    ========================== */
 .parameter-header {
     display: flex;
@@ -1579,7 +1579,7 @@ body {
 }
 
 /* ======================================================
-   Tahap 5 - Eksekusi Penjadwalan
+   Halaman Eksekusi Penjadwalan
    ====================================================== */
 .page-header-row {
     display: flex;
@@ -1984,7 +1984,7 @@ body {
 }
 
 /* ======================================================
-   Tahap 6 - Hasil Jadwal dan Evaluasi
+   Halaman Hasil Jadwal dan Evaluasi
    ====================================================== */
 :root {
     --border-color: var(--border);
@@ -2303,7 +2303,7 @@ body {
 }
 
 /* ==========================================================
-   Tahap 7 - Ekspor Hasil Penjadwalan
+   Halaman Ekspor Hasil Penjadwalan
    ========================================================== */
 .status-pill {
     display: inline-flex;
@@ -2460,7 +2460,7 @@ body {
 }
 
 /* =========================================================
-   Tahap 8 - Riwayat Jadwal
+   Halaman Riwayat Jadwal
    ========================================================= */
 .history-metric-grid {
     display: grid;
@@ -2727,7 +2727,7 @@ body {
     }
 }
 
-/* Tahap 9.2: multi grafik dan ekspor gambar */
+/* Multi grafik dan ekspor gambar */
 .chart-analysis-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2867,7 +2867,7 @@ body {
 }
 
 /* =========================================================
-   Tahap 9.3 - Perbaikan grafik terang + layout sticky
+   Grafik terang dan layout sticky
    ========================================================= */
 html,
 body {
@@ -2980,7 +2980,7 @@ body {
 }
 
 /* =========================================================
-   Tahap 9.4 - Grafik lebih informatif untuk demo dan laporan
+   Grafik informatif untuk demo dan laporan
    ========================================================= */
 .enhanced-chart-wrap {
     height: 430px;
@@ -3014,7 +3014,7 @@ body {
     }
 }
 
-/* Tahap 9.5 - Drag and drop upload + template download */
+/* Drag-and-drop upload dan template download */
 .drop-zone {
     transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
