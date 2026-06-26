@@ -52,14 +52,8 @@ body {
 .hero-logo {
     width: 64px;
     height: 64px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, #153c7a, #091a38 72%);
-    color: #ffd458;
-    display: grid;
-    place-items: center;
-    font-weight: 800;
-    border: 3px solid #0b1730;
-    box-shadow: 0 8px 18px rgba(16, 25, 54, 0.16);
+    object-fit: contain;
+    display: block;
     flex: 0 0 auto;
 }
 
@@ -3104,4 +3098,13 @@ body {
     background: #dbeafe;
     border-color: #93c5fd;
     transform: translateY(-1px);
+}
+
+.brand-logo {
+    border-radius: 0;
+}
+
+.hero-logo {
+    width: 72px;
+    height: 72px;
 }

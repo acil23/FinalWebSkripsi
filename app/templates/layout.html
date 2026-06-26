@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page_title }} - Sistem Penjadwalan Mata Kuliah</title>
     <link rel="stylesheet" href="{{ url_for('static', path='/css/app.css') }}" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', path='/images/logo-ub.png') }}" />
 </head>
 <body>
     <div class="app-shell">
         <aside class="sidebar">
             <div class="brand">
-                <div class="brand-logo">UB</div>
+                <img class="brand-logo" src="{{ url_for('static', path='/images/logo-ub.png') }}" alt="Logo Universitas Brawijaya" />
                 <div>
                     <div class="brand-title">Sistem Penjadwalan<br />Mata Kuliah</div>
                     <div class="brand-subtitle">Fakultas Ilmu Komputer<br />Universitas Brawijaya</div>
